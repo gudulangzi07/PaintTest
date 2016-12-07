@@ -3,4 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- 背景颜色 -->
+    <color name="bg_color">#eeeeee</color>
+
+    <color name="my_color_white">#FFFFFF</color>
+    <color name="my_color_black">#000000</color>
+    <color name="my_color_gray">#9F9FA0</color>
 </resources>
