@@ -10,4 +10,7 @@
     <color name="my_color_white">#FFFFFF</color>
     <color name="my_color_black">#000000</color>
     <color name="my_color_gray">#9F9FA0</color>
+    <color name="my_color_red">#FF0000</color>
+    <color name="my_color_green">#00FF00</color>
+    <color name="my_color_blue">#0000FF</color>
 </resources>
