@@ -13,4 +13,14 @@
         android:textColor="@color/my_color_black"
         android:textSize="@dimen/font16"/>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/my_color_white"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="button"
+        android:textColor="@color/my_color_black"
+        android:textSize="@dimen/font16"/>
 </LinearLayout>

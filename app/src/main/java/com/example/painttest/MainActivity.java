@@ -35,7 +35,7 @@ public class MainActivity extends BaseTitleActivity {
 
     @Override
     public void beforeInitView() {
-        pagerAdapter = new PagerAdapter(getSupportFragmentManager());
+        pagerAdapter = new PagerAdapter(getSupportFragmentManager(), this);
         fragmentOne = new FragmentOne();
         fragmentTwo = new FragmentTwo();
         fragmentThree = new FragmentThree();

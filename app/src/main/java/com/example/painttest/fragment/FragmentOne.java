@@ -25,6 +25,11 @@ public class FragmentOne extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_one, container);
+        return inflater.inflate(R.layout.fragment_one, null);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 }
