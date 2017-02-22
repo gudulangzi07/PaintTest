@@ -2,9 +2,17 @@ package com.example.painttest.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.example.painttest.R;
 
 /**
  * @ClassName: BombBoxView
@@ -14,21 +22,59 @@ import android.widget.LinearLayout;
  * @version: 1.0
  */
 public class BombBoxView extends LinearLayout {
+
+    private int[] widthAndHeightPixels;//点击控件的宽高
+    private int[] location;//点击控件在屏幕上坐标
+
+    private Paint paint;
+    private RectF rectF;
+    private Path path;
+
+    private int rectF_width;
+    private int rectF_height;
+
     public BombBoxView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public BombBoxView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public BombBoxView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+        this(context, attrs, defStyleAttr, 0);
     }
 
     @SuppressLint("NewApi")
     public BombBoxView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        setWillNotDraw(false);
+        if (attrs != null){
+            TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BombBoxView);
+            rectF_width = typedArray.getDimensionPixelSize(R.styleable.BombBoxView_rectF_width, 0);
+            rectF_height = typedArray.getDimensionPixelSize(R.styleable.BombBoxView_rectF_height, 0);
+        }
+
+        init();
+    }
+
+    public void setWidthAndHeightPixels(int[] widthAndHeightPixels) {
+        this.widthAndHeightPixels = widthAndHeightPixels;
+    }
+
+    public void setLocation(int[] location) {
+        this.location = location;
+    }
+
+    //加载默认属性
+    private void init() {
+        paint = new Paint();
+        paint.setColor(Color.BLUE);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setAntiAlias(true);//消除锯齿
+
+        rectF = new RectF();
+        path = new Path();
     }
 
     @Override
@@ -72,18 +118,38 @@ public class BombBoxView extends LinearLayout {
         }
     }
 
-    /**
-     * 要求所有的孩子测量自己的大小，然后根据这些孩子的大小完成自己的尺寸测量
-     */
-    @SuppressLint("NewApi")
+//    /**
+//     * 要求所有的孩子测量自己的大小，然后根据这些孩子的大小完成自己的尺寸测量
+//     */
+//    @SuppressLint("NewApi")
+//    @Override
+//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//        // 计算出所有的childView的宽和高
+//        measureChildren(widthMeasureSpec, heightMeasureSpec);
+//        //测量并保存layout的宽高(使用getDefaultSize时，wrap_content和match_perent都是填充屏幕)
+//        //稍后会重新写这个方法，能达到wrap_content的效果
+//        setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),
+//                getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));
+//    }
+
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        // 计算出所有的childView的宽和高
-        measureChildren(widthMeasureSpec, heightMeasureSpec);
-        //测量并保存layout的宽高(使用getDefaultSize时，wrap_content和match_perent都是填充屏幕)
-        //稍后会重新写这个方法，能达到wrap_content的效果
-        setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),
-                getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));
+    protected void onDraw(Canvas canvas) {
+        //画控件的三角形
+        path.moveTo(location[0] + widthAndHeightPixels[0] / 2, 0);//画三角的起点
+        path.lineTo(location[0] + widthAndHeightPixels[0] / 2 - widthAndHeightPixels[1] / 4, widthAndHeightPixels[1] / 4);
+        path.lineTo(location[0] + widthAndHeightPixels[0] / 2 + widthAndHeightPixels[1] / 4, widthAndHeightPixels[1] / 4);
+        path.close();
+        canvas.drawPath(path, paint);
+
+        int left = location[0] + widthAndHeightPixels[0] / 2 - rectF_width / 2;
+        int right = location[0] + widthAndHeightPixels[0] / 2 + rectF_width / 2;
+        int top = widthAndHeightPixels[1] / 4;
+        int bottom = widthAndHeightPixels[1] / 4 + rectF_height;
+
+        //画的控件大小
+        rectF.set(left, top, right, bottom);
+        canvas.drawRoundRect(rectF, 20, 20, paint);
+        super.onDraw(canvas);
     }
 
 }

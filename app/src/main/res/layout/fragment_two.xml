@@ -1,13 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="fragmentTwo"
-        android:textColor="@color/my_color_black"
-        android:textSize="@dimen/font16"/>
+
+    <com.example.painttest.widget.ShapeTextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="有边框"
+        apps:radius="10dp"
+        apps:solidColor="#5555ff"
+        apps:solidTouchColor="#ffffff"
+        apps:strokeColor="#ff0000"
+        apps:strokeTouchColor="#000000"
+        apps:strokeWith="3"
+        apps:textTouchColor="#000" />
+
+    <com.example.painttest.widget.ShapeTextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="没有边框"
+        apps:radius="10dp"
+        apps:solidColor="#5555ff"
+        apps:solidTouchColor="#555555"
+        apps:textTouchColor="#000" />
+
+    <com.example.painttest.widget.ShapeTextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="右上，左下圆角，其它直角"
+        android:textColor="#000000"
+        apps:bottomLeftRadius="10dp"
+        apps:shapeTpe="rectangle"
+        apps:solidColor="#fff"
+        apps:solidTouchColor="#ff5555"
+        apps:strokeColor="#ff0000"
+        apps:strokeTouchColor="#000000"
+        apps:strokeWith="5"
+        apps:textTouchColor="#ffffff"
+        apps:topRightRadius="10dp" />
+
+    <com.example.painttest.widget.ShapeTextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="椭圆带边框"
+        android:textColor="#000000"
+        apps:shapeTpe="oval"
+        apps:solidColor="#999"
+        apps:solidTouchColor="#00ff00"
+        apps:strokeColor="#ff0000"
+        apps:strokeTouchColor="#000000"
+        apps:strokeWith="5"
+        apps:textTouchColor="#ffffff" />
+
+    <com.example.painttest.widget.ShapeTextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="椭圆不带带边框"
+        android:textColor="#000000"
+        apps:shapeTpe="oval"
+        apps:solidColor="#999"
+        apps:solidTouchColor="#00ff00"
+        apps:textTouchColor="#ffffff" />
+
+    <com.example.painttest.widget.ShapeTextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="没有按下效果的椭圆"
+        android:textColor="#000000"
+        apps:shapeTpe="oval"
+        apps:solidColor="#999" />
 </LinearLayout>

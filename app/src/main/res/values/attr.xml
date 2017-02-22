@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ShapeTextView">
+        <!--填充色-->
+        <attr name="solidColor" format="color"></attr>
+        <!--边框色-->
+        <attr name="strokeColor" format="color"></attr>
+        <!--按下填充色-->
+        <attr name="solidTouchColor" format="color"></attr>
+        <!---按下边框色-->
+        <attr name="strokeTouchColor" format="color"></attr>
+        <!--文字按下颜色 -->
+        <attr name="textTouchColor" format="color"></attr>
+
+        <attr name="strokeWith" format="integer"></attr>
+
+        <attr name="radius" format="dimension"></attr>
+
+        <attr name="topLeftRadius" format="dimension"></attr>
+        <attr name="topRightRadius" format="dimension"></attr>
+        <attr name="bottomLeftRadius" format="dimension"></attr>
+        <attr name="bottomRightRadius" format="dimension"></attr>
+
+        <attr name="shapeTpe" format="enum">
+            <enum name="rectangle" value="0"></enum>
+            <enum name="oval" value="1"></enum>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BombBoxView">
+        <attr name="rectF_width" format="reference|dimension"/>
+        <attr name="rectF_height" format="reference|dimension"/>
+    </declare-styleable>
+</resources>
