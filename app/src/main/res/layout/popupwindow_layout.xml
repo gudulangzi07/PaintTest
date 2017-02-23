@@ -4,9 +4,11 @@
     android:id="@+id/bombBoxView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/my_color_blue"
     android:orientation="vertical"
     app:rectF_width="200dp"
-    app:rectF_height="100dp">
+    app:rectF_height="100dp"
+    app:isCustom_width_and_height="true">
 
     <TextView
         android:layout_width="match_parent"
